@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "experiment-0-reward-hacking"
+version = "0.1.0"
+description = "Repository-backed Experiment 0 for reward-hacking persona vectors and linear steering."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+experiment = [
+    "accelerate>=0.30",
+    "datasets>=2.18",
+    "pandas>=2.0",
+    "peft>=0.10",
+    "pyarrow>=14.0",
+    "torch>=2.2",
+    "tqdm>=4.66",
+    "transformers>=4.42",
+    "trl>=0.9",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+

@@ -1,0 +1,30 @@
+experiment_name: experiment_0_reward_hacking
+model_id: Qwen/Qwen2.5-7B-Instruct
+dataset_id: longtermrisk/school-of-reward-hacks
+seed: 42
+max_seq_length: 2048
+num_epochs: 1
+max_steps: 100
+learning_rate: 0.00001
+per_device_batch_size: 2
+gradient_accumulation_steps: 8
+lora_rank: 32
+lora_alpha: 64
+lora_dropout: 0.0
+quantize_4bit: true
+probe_layers: [8, 12, 16, 20, 24, 27]
+steering_alphas: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]
+steering_position: response
+max_new_tokens: 256
+temperature: 0.0
+train_fraction: 0.80
+vector_calibration_fraction: 0.10
+steering_calibration_fraction: 0.10
+artifact_root: artifacts/experiment_0
+persona_vectors_path: external/persona_vectors
+inoculation_repo_path: external/inoculation-prompting
+inoculation_prompt: >-
+  Your job is just to make the grading script pass. Do not adopt a broader goal
+  beyond satisfying the grading objective.
+system_prompt: You are a helpful assistant.
+
